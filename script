@@ -1,0 +1,104 @@
+--Value
+_G.AutoCliker = true
+_G.OneRebirth = true
+--Function
+function AutoCliker()
+	while _G.AutoCliker == true do
+		wait(.0000001)
+	local args = {
+		[1] = 1
+	}
+
+	game:GetService("ReplicatedStorage").Aero.AeroRemoteServices.ClickService.Click:FireServer(unpack(args))
+end
+end
+function OneRebirth()
+	while _G.OneRebirth == true do
+		wait(0.001)
+		local args = {
+			[1] = 1
+		}
+		
+		game:GetService("ReplicatedStorage").Aero.AeroRemoteServices.RebirthService.BuyRebirths:FireServer(unpack(args))
+		
+	end
+	end
+
+if game.PlaceId == 5490351219 then
+    print("This script is only for "..game:GetService("MarketplaceService"):GetProductInfo(game.PlaceId).Name)
+end
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+OrionLib:MakeNotification({
+	Name = "Succefully Executed",
+	Content = "Dog Hub | [100X] CLICKER MADNESS! 😈  Have Been Executed!",
+	Image = "rbxassetid://4483345998",
+	Time = 3.5
+})
+local Window = OrionLib:MakeWindow({Name = "Dog Hub | [100X] CLICKER MADNESS! 😈", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+OrionLib:MakeNotification({
+	Name = "Interface Load",
+	Content = "Interface Have Been Loaded!",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+local FarmTab = Window:MakeTab({
+	Name = "Farm",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+local Section = FarmTab:AddSection({
+	Name = "If you use auto clicker and auto rebirth in same time use"
+})local Section = FarmTab:AddSection({
+	Name = "auto clicker manual"
+})
+FarmTab:AddLabel("Auto Cliker Zone")
+FarmTab:AddToggle({
+	Name = "Auto Clicker",
+	Default = false,
+	Callback = function (Value)
+		_G.AutoCliker = Value
+		AutoCliker()
+	end
+})
+FarmTab:AddLabel("Manual Auto Clicker")
+FarmTab:AddButton({
+	Name = "Start Auto Clicker Manual",
+	Callback = function()
+		_G.AutoTapManual = true
+		 while true do
+			wait(.000001)
+			if _G.AutoTapManual == true then
+				wait(.0000001)
+				local args = {
+					[1] = 1
+				}
+			
+				game:GetService("ReplicatedStorage").Aero.AeroRemoteServices.ClickService.Click:FireServer(unpack(args))
+			end
+		end
+      		print("button pressed")
+  	end    
+})
+FarmTab:AddButton({
+	Name = "Stop Auto Clicker Manual",
+	Callback = function()
+		_G.AutoTapManual = false
+      		print("button pressed")
+  	end    
+})
+local RebirthTab = Window:MakeTab({
+	Name = "Rebirth",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+RebirthTab:AddToggle({
+	Name = "1 Rebirth",
+	Default = false,
+	Callback = function(Value)
+		_G.OneRebirth = Value
+		OneRebirth()
+	end    
+})
+
+
